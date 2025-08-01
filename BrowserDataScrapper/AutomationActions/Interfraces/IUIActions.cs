@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BrowserDataScrapper.AutomationActions.Interfraces
+﻿namespace BrowserDataScrapper.AutomationActions.Interfraces
 {
     public interface IUIActions
     {
+        string SetBrowserBarValue(string inputToBrowser, string searchedElement = "Chrome_WidgetWin_1");
     }
 }

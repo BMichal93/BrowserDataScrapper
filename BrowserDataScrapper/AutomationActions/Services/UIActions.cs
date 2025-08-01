@@ -12,7 +12,7 @@ namespace BrowserDataScrapper.AutomationActions.Services
         private const string _browserFailed = "Browser not found or data could not be set";
         private const string _browserDataSetAndExecute = "Browser was set and executed: ";
 
-        internal string SetBrowserBarValue(string inputToBrowser, string searchedElement = "Chrome_WidgetWin_1") //This method is used to find browser bar and set its value to variable.
+        public string SetBrowserBarValue(string inputToBrowser, string searchedElement = "Chrome_WidgetWin_1") //This method is used to find browser bar and set its value to variable.
         {
             var result = _browserFailed;
             AutomationElement root = AutomationElement.RootElement;

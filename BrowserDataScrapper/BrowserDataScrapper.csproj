@@ -50,9 +50,9 @@
     <Compile Include="AutomationActions\Services\EngineActions.cs" />
     <Compile Include="Helpers\KeyboardHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebActions\Interfaces\IBrowserGetActions.cs" />
+    <Compile Include="WebActions\Services\BrowserGetActions.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="WebActions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
