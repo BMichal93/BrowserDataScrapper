@@ -63,6 +63,7 @@
     <Compile Include="AutomationActions\Services\UIActionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebActions\Services\BrowserGetActionsTests.cs" />
+    <Compile Include="WebActions\Services\BrowserSetActionsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BrowserDataScrapper\BrowserDataScrapper.csproj">
