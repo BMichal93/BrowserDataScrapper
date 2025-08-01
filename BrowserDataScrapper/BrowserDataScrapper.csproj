@@ -47,7 +47,6 @@
     <Compile Include="AutomationActions\Interfraces\IUIActions.cs" />
     <Compile Include="AutomationActions\Services\UIActions.cs" />
     <Compile Include="AutomationActions\Services\EngineActions.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

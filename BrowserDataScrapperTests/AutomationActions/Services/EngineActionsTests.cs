@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using BrowserDataScrapper.AutomationActions.Services;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BrowserDataScrapper.AutomationActions.Tests
 {
@@ -18,5 +19,6 @@ namespace BrowserDataScrapper.AutomationActions.Tests
             //Assert
             Assert.IsTrue(result.Contains("Browser has been invoked successfully"));
         }
+
     }
 }

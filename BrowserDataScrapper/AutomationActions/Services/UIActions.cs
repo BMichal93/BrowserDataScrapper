@@ -1,34 +1,43 @@
 ﻿using BrowserDataScrapper.AutomationActions.Interfraces;
-using System;
-using System.Collections.Generic;
 using System.Windows.Automation;
 
 namespace BrowserDataScrapper.AutomationActions.Services
 {
     public class UIActions : IUIActions
     {
+        private const string _browserFound = "Browser found successfully";
+        private const string _browserDataSet = "Browser has been found and data is set successfully to: ";
+        private const string _browserFailed = "Browser not found or data could not be set";
 
-        public List<object> GetBrowserUI()
+        internal string SetBrowserBarValue(string inputToBrowser, string searchedElement = "Chrome_WidgetWin_1") //This method is used to find browser bar and set its value to variable.
         {
-            List<object> result = new List<object>();
+            var result = _browserFailed;
             AutomationElement root = AutomationElement.RootElement;
             Condition condition = new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Window);
             AutomationElementCollection windows = root.FindAll(TreeScope.Children, condition);
 
             foreach (AutomationElement window in windows)
             {
-                string name = window.Current.Name;
                 string className = window.Current.ClassName;
 
-                if (name.Contains("Google Chrome") || name.Contains("Microsoft Edge"))
+                if (className.Contains(searchedElement))
                 {
-                    Console.WriteLine($"Found browser window: {name} ({className})");
-                    result.Add(new { Name = name, ClassName = className, AutomationElement = window });
+                    Condition editCondition = new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Edit);
+                    AutomationElement addressBar = window.FindFirst(TreeScope.Descendants, editCondition);
+                    result = _browserFound;
+
+                    if (addressBar.TryGetCurrentPattern(ValuePattern.Pattern, out object patternObj))
+                    {
+                        ValuePattern valuePattern = (ValuePattern)patternObj;
+                        valuePattern.SetValue(inputToBrowser);
+                        result = _browserDataSet + inputToBrowser;
+                    }
+
+                    break;
 
                 }
             }
             return result;
-
         }
     }
 }

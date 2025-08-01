@@ -1,7 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Linq;
 using System.Diagnostics;
-using System.Threading;
 
 namespace BrowserDataScrapper.AutomationActions.Services.Tests
 {
@@ -9,19 +7,19 @@ namespace BrowserDataScrapper.AutomationActions.Services.Tests
     public class UIActionsTests
     {
         [TestMethod()]
-        public void GetBrowserUITest_CanFindBrowser()
+        public void SetBrowserBarValueTest_BarFoundAndPopulated()
         {
             //Arrange
             Process.Start("msedge");
-            Thread.Sleep(5000);
-            var uiActions = new UIActions();
+            var inputToBrowser = "javascript:alert('Hello World!');";
+            UIActions uIActionsTests = new UIActions();
 
             //Act
-            var result = uiActions.GetBrowserUI();
+            var result = uIActionsTests.SetBrowserBarValue(inputToBrowser);
 
             //Assert
-            Assert.IsNotNull(result);
-            Assert.IsTrue(result.Count() > 0,"No elements in the list");
+            Assert.AreEqual("Browser has been found and data is set successfully to: " + inputToBrowser, result, "The browser bar value was not set correctly or the browser was not found.");
+
         }
     }
 }
