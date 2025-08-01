@@ -18,7 +18,7 @@ namespace BrowserDataScrapper.WebActions.Services
         }
 
         [STAThread]
-        public string InvokeCustomJavascript(string url, string command)
+        public string InvokeJavascript(string url, string command)
         {
             string result = null;
             _engineActions.InvokeBrowser(url);
