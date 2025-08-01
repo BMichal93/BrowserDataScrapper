@@ -10,6 +10,7 @@ namespace BrowserDataScrapper.WebActions.Services
         private IEngineActions _engineActions;
         private const string _actionSucceeded = "Action has been successfully performed on the website.";
         private const string _incorrectJS = "Javascript is incorrect";
+        private const string _setFieldByIdCommand = "javascript:(function(){document.getElementById({0}).value = {1};})();";
 
         public BrowserSetActions(IUIActions uiActions, IEngineActions engineActions)
         {
@@ -21,7 +22,12 @@ namespace BrowserDataScrapper.WebActions.Services
         public string InvokeJavascript(string url, string command)
         {
             string result = null;
-            _engineActions.InvokeBrowser(url);
+
+            if (!_engineActions.IsBrowserExisting())
+            {
+                _engineActions.InvokeBrowser(url);
+            }
+
             if (!IsCorrectJSFormat(command))
             {
                 result = _incorrectJS;
@@ -35,6 +41,16 @@ namespace BrowserDataScrapper.WebActions.Services
             return result;
         }
 
+        [STAThread]
+        public void SetElementById(string url, string id, string setTo)
+        {
+            if (!_engineActions.IsBrowserExisting())
+            {
+                _engineActions.InvokeBrowser(url);
+            }
+            
+            var pageRequestResult = _uiActions.SetBrowserBarValue(_setFieldByIdCommand);
+        }
 
         private bool IsCorrectJSFormat(string command)
         {

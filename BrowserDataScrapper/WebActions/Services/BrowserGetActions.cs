@@ -1,10 +1,6 @@
 ﻿using BrowserDataScrapper.AutomationActions.Interfraces;
 using BrowserDataScrapper.WebActions.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BrowserDataScrapper.WebActions.Services
@@ -27,7 +23,11 @@ namespace BrowserDataScrapper.WebActions.Services
         public string GetPageSourceAsString(string url)
         {
             string result = null;
-            _engineActions.InvokeBrowser(url);
+
+            if (!_engineActions.IsBrowserExisting())
+            {
+                _engineActions.InvokeBrowser(url);
+            }
 
 
             var pageRequestResult = _uiActions.SetBrowserBarValue(_getPageCommand);
