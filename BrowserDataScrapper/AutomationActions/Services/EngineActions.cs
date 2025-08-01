@@ -1,6 +1,7 @@
 ﻿using BrowserDataScrapper.AutomationActions.Interfraces;
 using System;
 using System.Diagnostics;
+using System.Threading;
 
 namespace BrowserDataScrapper.AutomationActions
 {
@@ -31,6 +32,7 @@ namespace BrowserDataScrapper.AutomationActions
                 result = _exceptionInBrowser + ex.Message;
 
             }
+            Thread.Sleep(2000); 
             return result;
         }
     }
