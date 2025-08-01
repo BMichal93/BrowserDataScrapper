@@ -1,5 +1,7 @@
 ﻿using BrowserDataScrapper.AutomationActions.Interfraces;
+using BrowserDataScrapper.Helpers;
 using System.Windows.Automation;
+using System.Windows.Forms;
 
 namespace BrowserDataScrapper.AutomationActions.Services
 {
@@ -8,6 +10,7 @@ namespace BrowserDataScrapper.AutomationActions.Services
         private const string _browserFound = "Browser found successfully";
         private const string _browserDataSet = "Browser has been found and data is set successfully to: ";
         private const string _browserFailed = "Browser not found or data could not be set";
+        private const string _browserDataSetAndExecute = "Browser was set and executed: ";
 
         internal string SetBrowserBarValue(string inputToBrowser, string searchedElement = "Chrome_WidgetWin_1") //This method is used to find browser bar and set its value to variable.
         {
@@ -31,6 +34,8 @@ namespace BrowserDataScrapper.AutomationActions.Services
                         ValuePattern valuePattern = (ValuePattern)patternObj;
                         valuePattern.SetValue(inputToBrowser);
                         result = _browserDataSet + inputToBrowser;
+                        KeyboardHelper.EnterKey();
+                        result = _browserDataSetAndExecute + inputToBrowser;
                     }
 
                     break;

@@ -12,13 +12,14 @@ namespace BrowserDataScrapper.AutomationActions.Services.Tests
             //Arrange
             Process.Start("msedge");
             var inputToBrowser = "javascript:alert('Hello World!');";
+            var successMessage = "Browser was set and executed: " + inputToBrowser;
             UIActions uIActionsTests = new UIActions();
 
             //Act
             var result = uIActionsTests.SetBrowserBarValue(inputToBrowser);
 
             //Assert
-            Assert.AreEqual("Browser has been found and data is set successfully to: " + inputToBrowser, result, "The browser bar value was not set correctly or the browser was not found.");
+            Assert.AreEqual(successMessage, result, "The browser bar value was not set correctly or the browser was not found.");
 
         }
     }
