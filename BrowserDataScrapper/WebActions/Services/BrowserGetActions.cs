@@ -14,8 +14,9 @@ namespace BrowserDataScrapper.WebActions.Services
         private IUIActions _uiActions;
         private IEngineActions _engineActions;
         private const string _getPageCommand = "javascript:(function(){setTimeout(function(){try{navigator.clipboard.writeText(document.getElementsByTagName('body')[0].innerHTML).then(()=>console.log(' Full HTML copied to clipboard!')).catch(e=>console.log('❌ Copy failed: '+e));}catch(e){console.log('❌ Error: '+e);}},300);})();";
-        private const string _incorrectJS = "Javascript is incorrect";
         private const string _exceptionWhenDownloading = "Exception occured when downloading page source: ";
+        
+
         public BrowserGetActions(IUIActions uiActions, IEngineActions engineActions)
         {
             _uiActions = uiActions;
@@ -23,17 +24,14 @@ namespace BrowserDataScrapper.WebActions.Services
         }
 
         [STAThread]
-        public string GetPageSource(string url)
+        public string GetPageSourceAsString(string url)
         {
             string result = null;
-            _engineActions.InvokeBrowser(url, true);
+            _engineActions.InvokeBrowser(url);
 
-            if(!IsCorrectJSFormat(_getPageCommand))
-            {
-                result = _incorrectJS;
-            }
 
             var pageRequestResult = _uiActions.SetBrowserBarValue(_getPageCommand);
+
             if(pageRequestResult.Contains("Copy failed: "))
             {
                 result = _exceptionWhenDownloading + pageRequestResult;
@@ -45,19 +43,6 @@ namespace BrowserDataScrapper.WebActions.Services
 
             return result;
 
-        }
-
-
-        private bool IsCorrectJSFormat(string command)
-        {
-            if(command.StartsWith("javascript:") && command.EndsWith(";"))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
 
     }

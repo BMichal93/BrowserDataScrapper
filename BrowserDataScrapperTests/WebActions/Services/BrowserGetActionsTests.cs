@@ -19,7 +19,7 @@ namespace BrowserDataScrapper.WebActions.Services.Tests
             var browserGetActions = new BrowserGetActions(uiActions, engineActions);
 
             //Act
-            var result = browserGetActions.GetPageSource(url);
+            var result = browserGetActions.GetPageSourceAsString(url);
 
             //Assert
             Assert.IsNotNull(result);
