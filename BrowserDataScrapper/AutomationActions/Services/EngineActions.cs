@@ -1,5 +1,4 @@
 ﻿using BrowserDataScrapper.AutomationActions.Interfraces;
-using BrowserDataScrapper.Helpers;
 using System;
 using System.Diagnostics;
 using System.Threading;

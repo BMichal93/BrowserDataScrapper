@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using BrowserDataScrapper.WebActions.Services;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BrowserDataScrapper.AutomationActions.Services;
 using BrowserDataScrapper.AutomationActions;
 
@@ -25,5 +26,7 @@ namespace BrowserDataScrapper.WebActions.Services.Tests
             //Assert
             Assert.IsTrue(result.Contains(expectedResult), "The result does not contain the expected success message.");
         }
+
+        
     }
 }

@@ -1,7 +1,6 @@
 ﻿using BrowserDataScrapper.AutomationActions.Interfraces;
 using BrowserDataScrapper.Helpers;
 using System.Windows.Automation;
-using System.Windows.Forms;
 
 namespace BrowserDataScrapper.AutomationActions.Services
 {
