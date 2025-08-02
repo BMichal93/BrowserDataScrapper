@@ -1,6 +1,7 @@
 ﻿using BrowserDataScrapper.AutomationActions.Interfraces;
 using System;
 using System.Diagnostics;
+using System.Security.Policy;
 using System.Threading;
 using System.Windows.Automation;
 
@@ -62,5 +63,7 @@ namespace BrowserDataScrapper.AutomationActions
             }
             return result;
         }
+
+    
     }
 }

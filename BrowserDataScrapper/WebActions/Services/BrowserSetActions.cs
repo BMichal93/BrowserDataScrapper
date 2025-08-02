@@ -8,14 +8,16 @@ namespace BrowserDataScrapper.WebActions.Services
     {
         private IUIActions _uiActions;
         private IEngineActions _engineActions;
+        private IBrowserGeneralActions _browserGeneralActions;
         private const string _actionSucceeded = "Action has been successfully performed on the website.";
         private const string _incorrectJS = "Javascript is incorrect";
         private string _setFieldByIdCommand = "javascript:(function(){{document.getElementById('{0}').value = '{1}';}})();";
 
-        public BrowserSetActions(IUIActions uiActions, IEngineActions engineActions)
+        public BrowserSetActions(IUIActions uiActions, IEngineActions engineActions, IBrowserGeneralActions browserGeneralActions)
         {
             _uiActions = uiActions;
             _engineActions = engineActions;
+            _browserGeneralActions = browserGeneralActions;
         }
 
         [STAThread]
@@ -23,10 +25,7 @@ namespace BrowserDataScrapper.WebActions.Services
         {
             string result = null;
 
-            if (!_engineActions.IsBrowserExisting())
-            {
-                _engineActions.InvokeBrowser(url);
-            }
+            _browserGeneralActions.PrepareBrowserInstance(url);
 
             if (!IsCorrectJSFormat(command))
             {
@@ -44,12 +43,9 @@ namespace BrowserDataScrapper.WebActions.Services
         [STAThread]
         public void SetElementById(string url, string id, string setTo)
         {
-            if (!_engineActions.IsBrowserExisting())
-            {
-                _engineActions.InvokeBrowser(url);
-            }
-            
-            var pageRequestResult = _uiActions.SetBrowserBarValue(string.Format(_setFieldByIdCommand,id,setTo));
+            _browserGeneralActions.PrepareBrowserInstance(url);
+
+            var pageRequestResult = _uiActions.SetBrowserBarValue(string.Format(_setFieldByIdCommand, id, setTo));
         }
 
         private bool IsCorrectJSFormat(string command)

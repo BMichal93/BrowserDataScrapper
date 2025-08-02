@@ -9,14 +9,17 @@ namespace BrowserDataScrapper.WebActions.Services
     {
         private IUIActions _uiActions;
         private IEngineActions _engineActions;
+        private IBrowserGeneralActions _browserGeneralActions;
         private const string _getPageCommand = "javascript:(function(){setTimeout(function(){try{navigator.clipboard.writeText(document.getElementsByTagName('body')[0].innerHTML).then(()=>console.log(' Full HTML copied to clipboard!')).catch(e=>console.log('❌ Copy failed: '+e));}catch(e){console.log('❌ Error: '+e);}},300);})();";
         private const string _exceptionWhenDownloading = "Exception occured when downloading page source: ";
         
 
-        public BrowserGetActions(IUIActions uiActions, IEngineActions engineActions)
+        public BrowserGetActions(IUIActions uiActions, IEngineActions engineActions, IBrowserGeneralActions browserGeneralActions)
         {
             _uiActions = uiActions;
             _engineActions = engineActions;
+            _browserGeneralActions = browserGeneralActions;
+
         }
 
         [STAThread]
@@ -24,11 +27,7 @@ namespace BrowserDataScrapper.WebActions.Services
         {
             string result = null;
 
-            if (!_engineActions.IsBrowserExisting())
-            {
-                _engineActions.InvokeBrowser(url);
-            }
-
+            _browserGeneralActions.PrepareBrowserInstance(url);
 
             var pageRequestResult = _uiActions.SetBrowserBarValue(_getPageCommand);
 
