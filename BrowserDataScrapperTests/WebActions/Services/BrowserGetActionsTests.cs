@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using BrowserDataScrapper.WebActions.Services;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BrowserDataScrapper.AutomationActions;
 using BrowserDataScrapper.AutomationActions.Services;
 
@@ -10,13 +11,15 @@ namespace BrowserDataScrapper.WebActions.Services.Tests
         EngineActions engineActions = new EngineActions();
         UIActions uiActions = new UIActions();
 
+
         [TestMethod()]
         public void GetPageSourceTest_WebpageFound()
         {
             //Arrange
             var url = "https://www.google.com";
             var expectedPartOfResult = "HTML";
-            var browserGetActions = new BrowserGetActions(uiActions, engineActions);
+            BrowserGeneralActions browserGeneralActions = new BrowserGeneralActions(uiActions, engineActions);
+            var browserGetActions = new BrowserGetActions(uiActions, engineActions, browserGeneralActions);
 
             //Act
             var result = browserGetActions.GetPageSourceAsString(url);

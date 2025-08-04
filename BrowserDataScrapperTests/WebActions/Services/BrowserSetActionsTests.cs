@@ -18,7 +18,8 @@ namespace BrowserDataScrapper.WebActions.Services.Tests
             string url = "https://www.google.com";
             var expectedResult = "Action has been successfully performed on the website.";
             var jsToRun = "javascript:alert('Hello World');";
-            BrowserSetActions browserSetActions = new BrowserSetActions(uiActions, engineActions);
+            BrowserGeneralActions browserGeneralActions = new BrowserGeneralActions(uiActions, engineActions);
+            BrowserSetActions browserSetActions = new BrowserSetActions(uiActions, engineActions, browserGeneralActions);
 
             //Act
             var result = browserSetActions.InvokeJavascript(url, jsToRun);

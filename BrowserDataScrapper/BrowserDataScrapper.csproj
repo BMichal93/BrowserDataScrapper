@@ -48,6 +48,8 @@
     <Compile Include="AutomationActions\Interfraces\IUIActions.cs" />
     <Compile Include="AutomationActions\Services\UIActions.cs" />
     <Compile Include="AutomationActions\Services\EngineActions.cs" />
+    <Compile Include="ExposedActions\ExposedActions.cs" />
+    <Compile Include="ExposedActions\IExposedActions.cs" />
     <Compile Include="Helpers\KeyboardHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebActions\Interfaces\IBrowserGeneralActions.cs" />
