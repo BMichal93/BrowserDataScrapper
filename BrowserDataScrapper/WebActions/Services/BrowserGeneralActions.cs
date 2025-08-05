@@ -18,7 +18,7 @@ namespace BrowserDataScrapper.WebActions.Services
         }
 
         [STAThread]
-        public void PrepareBrowserInstance(string url)
+        public void PrepareBrowserInstance(string url,int timeoutForBrowser = 4000)
         {
             if (!_engineActions.IsBrowserExisting())
             {
@@ -27,7 +27,7 @@ namespace BrowserDataScrapper.WebActions.Services
             else
             {
                 _uiActions.SetBrowserBarValue(url);
-                Thread.Sleep(3500);
+                Thread.Sleep(timeoutForBrowser);
             }
         }
     }

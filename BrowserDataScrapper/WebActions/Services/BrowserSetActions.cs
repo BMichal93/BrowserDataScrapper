@@ -20,11 +20,11 @@ namespace BrowserDataScrapper.WebActions.Services
         }
 
         [STAThread]
-        public string InvokeJavascript(string url, string command)
+        public string InvokeJavascript(string url, string command, int browserTimeout = 4000)
         {
             string result = null;
 
-            _browserGeneralActions.PrepareBrowserInstance(url);
+            _browserGeneralActions.PrepareBrowserInstance(url, browserTimeout);
 
             if (!IsCorrectJSFormat(command))
             {
@@ -40,9 +40,9 @@ namespace BrowserDataScrapper.WebActions.Services
         }
 
         [STAThread]
-        public void SetElementById(string url, string id, string setTo)
+        public void SetElementById(string url, string id, string setTo, int browserTimeout = 4000)
         {
-            _browserGeneralActions.PrepareBrowserInstance(url);
+            _browserGeneralActions.PrepareBrowserInstance(url, browserTimeout);
 
             var pageRequestResult = _uiActions.SetBrowserBarValue(string.Format(_setFieldByIdCommand, id, setTo));
         }

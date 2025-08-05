@@ -23,11 +23,11 @@ namespace BrowserDataScrapper.WebActions.Services
         }
 
         [STAThread]
-        public string GetPageSourceAsString(string url)
+        public string GetPageSourceAsString(string url,int browserTimeout = 4000)
         {
             string result = null;
 
-            _browserGeneralActions.PrepareBrowserInstance(url);
+            _browserGeneralActions.PrepareBrowserInstance(url, browserTimeout);
 
             var pageRequestResult = _uiActions.SetBrowserBarValue(_getPageCommand);
 
@@ -45,11 +45,11 @@ namespace BrowserDataScrapper.WebActions.Services
         }
 
         [STAThread]
-        public string GetElementValueById(string url, string id)
+        public string GetElementValueById(string url, string id, int browserTimeout = 4000)
         {
             string result = null;
 
-            _browserGeneralActions.PrepareBrowserInstance(url);
+            _browserGeneralActions.PrepareBrowserInstance(url,browserTimeout);
 
             var pageRequestResult = _uiActions.SetBrowserBarValue(string.Format(_getElementById, id));
 
@@ -66,11 +66,11 @@ namespace BrowserDataScrapper.WebActions.Services
         }
 
         [STAThread]
-        public string GetElementWithCustomQuery(string url, string query)
+        public string GetElementWithCustomQuery(string url, string query, int browserTimeout = 4000)
         {
             string result = null;
 
-            _browserGeneralActions.PrepareBrowserInstance(url);
+            _browserGeneralActions.PrepareBrowserInstance(url, browserTimeout);
 
             var pageRequestResult = _uiActions.SetBrowserBarValue(string.Format(_getElementByCustomQuery, query));
             if (pageRequestResult.Contains("Copy failed: "))

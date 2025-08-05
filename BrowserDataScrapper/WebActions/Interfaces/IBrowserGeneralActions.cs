@@ -2,6 +2,6 @@
 {
     public interface IBrowserGeneralActions
     {
-        void PrepareBrowserInstance(string url);
+        void PrepareBrowserInstance(string url, int timeoutForBrowser = 4000);
     }
 }
