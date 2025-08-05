@@ -14,10 +14,11 @@ namespace BrowserDataScrapper.ExposedActions
         private IBrowserSetActions _browserSetActions;
         private IBrowserGetActions _browserGetActions;
 
-        public ExposedActions(IBrowserSetActions browserSetActions, IBrowserGetActions browserGetActions)
+
+        public ExposedActions()
         {
-            _browserGetActions = browserGetActions;
-            _browserSetActions = browserSetActions;
+            _browserGetActions = new BrowserGetActions();
+            _browserSetActions = new BrowserSetActions();
         }
 
         public string GetPageSourceAsString(string url)

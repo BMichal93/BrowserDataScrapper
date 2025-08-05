@@ -5,6 +5,7 @@ namespace BrowserDataScrapper.ExposedActions
 {
     [ComVisible(true)]
     [Guid("C45E8B7C-9204-40C1-B2C0-3F67E40A24C0")]
+    [InterfaceType(ComInterfaceType.InterfaceIsDual)] 
     public interface IExposedActions
     {
         string GetPageSourceAsString(string url);

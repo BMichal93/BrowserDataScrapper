@@ -8,8 +8,6 @@ namespace BrowserDataScrapper.WebActions.Services.Tests
     [TestClass()]
     public class BrowserSetActionsTests
     {
-        EngineActions engineActions = new EngineActions();
-        UIActions uiActions = new UIActions();
 
         [TestMethod()]
         public void InvokeJavascriptTest_SimpleJSCommand()
@@ -18,8 +16,8 @@ namespace BrowserDataScrapper.WebActions.Services.Tests
             string url = "https://www.google.com";
             var expectedResult = "Action has been successfully performed on the website.";
             var jsToRun = "javascript:alert('Hello World');";
-            BrowserGeneralActions browserGeneralActions = new BrowserGeneralActions(uiActions, engineActions);
-            BrowserSetActions browserSetActions = new BrowserSetActions(uiActions, browserGeneralActions);
+            BrowserGeneralActions browserGeneralActions = new BrowserGeneralActions();
+            BrowserSetActions browserSetActions = new BrowserSetActions();
 
             //Act
             var result = browserSetActions.InvokeJavascript(url, jsToRun);

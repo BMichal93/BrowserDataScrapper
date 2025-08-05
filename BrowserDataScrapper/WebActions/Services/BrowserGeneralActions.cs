@@ -1,4 +1,6 @@
-﻿using BrowserDataScrapper.AutomationActions.Interfraces;
+﻿using BrowserDataScrapper.AutomationActions;
+using BrowserDataScrapper.AutomationActions.Interfraces;
+using BrowserDataScrapper.AutomationActions.Services;
 using BrowserDataScrapper.WebActions.Interfaces;
 using System;
 using System.Threading;
@@ -9,10 +11,10 @@ namespace BrowserDataScrapper.WebActions.Services
     {
         private IEngineActions _engineActions;
         private IUIActions _uiActions;
-        public BrowserGeneralActions(IUIActions uiactions, IEngineActions engineactions) 
+        public BrowserGeneralActions() 
         {
-            _uiActions = uiactions;
-            _engineActions = engineactions;
+            _uiActions = new UIActions();
+            _engineActions = new EngineActions();
         }
 
         [STAThread]

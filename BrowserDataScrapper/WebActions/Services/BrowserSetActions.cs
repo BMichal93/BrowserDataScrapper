@@ -1,4 +1,5 @@
 ﻿using BrowserDataScrapper.AutomationActions.Interfraces;
+using BrowserDataScrapper.AutomationActions.Services;
 using BrowserDataScrapper.WebActions.Interfaces;
 using System;
 
@@ -12,10 +13,10 @@ namespace BrowserDataScrapper.WebActions.Services
         private const string _incorrectJS = "Javascript is incorrect";
         private string _setFieldByIdCommand = "javascript:(function(){{document.getElementById('{0}').value = '{1}';}})();";
 
-        public BrowserSetActions(IUIActions uiActions, IBrowserGeneralActions browserGeneralActions)
+        public BrowserSetActions()
         {
-            _uiActions = uiActions;
-            _browserGeneralActions = browserGeneralActions;
+            _uiActions = new UIActions();
+            _browserGeneralActions = new BrowserGeneralActions();
         }
 
         [STAThread]

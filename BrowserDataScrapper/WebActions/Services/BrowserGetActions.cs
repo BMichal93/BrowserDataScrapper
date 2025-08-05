@@ -1,4 +1,5 @@
 ﻿using BrowserDataScrapper.AutomationActions.Interfraces;
+using BrowserDataScrapper.AutomationActions.Services;
 using BrowserDataScrapper.WebActions.Interfaces;
 using System;
 using System.Windows.Forms;
@@ -14,10 +15,10 @@ namespace BrowserDataScrapper.WebActions.Services
         private const string _exceptionWhenDownloading = "Exception occured when downloading page source: ";
         private const string _getElementByCustomQuery = "javascript:(function(){setTimeout(function(){try{navigator.clipboard.writeText({0}}).then(()=>console.log(' Full HTML copied to clipboard!')).catch(e=>console.log('❌ Copy failed: '+e));}catch(e){console.log('❌ Error: '+e);}},300);})();";
 
-        public BrowserGetActions(IUIActions uiActions, IBrowserGeneralActions browserGeneralActions)
+        public BrowserGetActions()
         {
-            _uiActions = uiActions;
-            _browserGeneralActions = browserGeneralActions;
+            _uiActions = new UIActions();
+            _browserGeneralActions = new BrowserGeneralActions();
 
         }
 

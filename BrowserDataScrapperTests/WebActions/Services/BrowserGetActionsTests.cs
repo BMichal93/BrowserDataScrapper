@@ -8,9 +8,6 @@ namespace BrowserDataScrapper.WebActions.Services.Tests
     [TestClass()]
     public class BrowserGetActionsTests
     {
-        EngineActions engineActions = new EngineActions();
-        UIActions uiActions = new UIActions();
-
 
         [TestMethod()]
         public void GetPageSourceTest_WebpageFound()
@@ -18,8 +15,8 @@ namespace BrowserDataScrapper.WebActions.Services.Tests
             //Arrange
             var url = "https://www.google.com";
             var expectedPartOfResult = "HTML";
-            BrowserGeneralActions browserGeneralActions = new BrowserGeneralActions(uiActions, engineActions);
-            var browserGetActions = new BrowserGetActions(uiActions, browserGeneralActions);
+            BrowserGeneralActions browserGeneralActions = new BrowserGeneralActions();
+            var browserGetActions = new BrowserGetActions();
 
             //Act
             var result = browserGetActions.GetPageSourceAsString(url);
