@@ -7,16 +7,14 @@ namespace BrowserDataScrapper.WebActions.Services
     public class BrowserSetActions : IBrowserSetActions
     {
         private IUIActions _uiActions;
-        private IEngineActions _engineActions;
         private IBrowserGeneralActions _browserGeneralActions;
         private const string _actionSucceeded = "Action has been successfully performed on the website.";
         private const string _incorrectJS = "Javascript is incorrect";
         private string _setFieldByIdCommand = "javascript:(function(){{document.getElementById('{0}').value = '{1}';}})();";
 
-        public BrowserSetActions(IUIActions uiActions, IEngineActions engineActions, IBrowserGeneralActions browserGeneralActions)
+        public BrowserSetActions(IUIActions uiActions, IBrowserGeneralActions browserGeneralActions)
         {
             _uiActions = uiActions;
-            _engineActions = engineActions;
             _browserGeneralActions = browserGeneralActions;
         }
 

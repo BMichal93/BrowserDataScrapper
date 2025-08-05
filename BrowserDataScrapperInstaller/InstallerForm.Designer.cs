@@ -36,15 +36,20 @@
             this.pic_WizardWand = new System.Windows.Forms.PictureBox();
             this.txt_Introduction = new System.Windows.Forms.RichTextBox();
             this.tbp_InstallPage = new System.Windows.Forms.TabPage();
+            this.progress_InstallerBar = new System.Windows.Forms.ProgressBar();
+            this.txt_PleaseWait = new System.Windows.Forms.RichTextBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tc_MainTabs.SuspendLayout();
             this.tbp_WelcomePage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_WizardWand)).BeginInit();
+            this.tbp_InstallPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // tc_MainTabs
             // 
             this.tc_MainTabs.Controls.Add(this.tbp_WelcomePage);
             this.tc_MainTabs.Controls.Add(this.tbp_InstallPage);
+            this.tc_MainTabs.Controls.Add(this.tabPage1);
             this.tc_MainTabs.Location = new System.Drawing.Point(3, 4);
             this.tc_MainTabs.Name = "tc_MainTabs";
             this.tc_MainTabs.SelectedIndex = 0;
@@ -112,6 +117,8 @@
             // 
             // tbp_InstallPage
             // 
+            this.tbp_InstallPage.Controls.Add(this.progress_InstallerBar);
+            this.tbp_InstallPage.Controls.Add(this.txt_PleaseWait);
             this.tbp_InstallPage.Location = new System.Drawing.Point(4, 22);
             this.tbp_InstallPage.Name = "tbp_InstallPage";
             this.tbp_InstallPage.Padding = new System.Windows.Forms.Padding(3);
@@ -119,6 +126,34 @@
             this.tbp_InstallPage.TabIndex = 1;
             this.tbp_InstallPage.Text = "Installation";
             this.tbp_InstallPage.UseVisualStyleBackColor = true;
+            // 
+            // progress_InstallerBar
+            // 
+            this.progress_InstallerBar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.progress_InstallerBar.Location = new System.Drawing.Point(31, 158);
+            this.progress_InstallerBar.Name = "progress_InstallerBar";
+            this.progress_InstallerBar.Size = new System.Drawing.Size(715, 23);
+            this.progress_InstallerBar.TabIndex = 2;
+            // 
+            // txt_PleaseWait
+            // 
+            this.txt_PleaseWait.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_PleaseWait.Enabled = false;
+            this.txt_PleaseWait.Location = new System.Drawing.Point(31, 103);
+            this.txt_PleaseWait.Name = "txt_PleaseWait";
+            this.txt_PleaseWait.Size = new System.Drawing.Size(279, 40);
+            this.txt_PleaseWait.TabIndex = 1;
+            this.txt_PleaseWait.Text = "Please wait while the wizard will install required files...\n\n";
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(777, 398);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // frm_Installer
             // 
@@ -132,6 +167,7 @@
             this.tc_MainTabs.ResumeLayout(false);
             this.tbp_WelcomePage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pic_WizardWand)).EndInit();
+            this.tbp_InstallPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -145,6 +181,9 @@
         private System.Windows.Forms.PictureBox pic_WizardWand;
         private System.Windows.Forms.Button btn_Cancel;
         private System.Windows.Forms.Button btn_Next;
+        private System.Windows.Forms.ProgressBar progress_InstallerBar;
+        private System.Windows.Forms.RichTextBox txt_PleaseWait;
+        private System.Windows.Forms.TabPage tabPage1;
     }
 }
 

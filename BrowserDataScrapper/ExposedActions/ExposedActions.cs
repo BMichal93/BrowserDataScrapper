@@ -1,4 +1,5 @@
 ﻿using BrowserDataScrapper.WebActions.Interfaces;
+using BrowserDataScrapper.WebActions.Services;
 using System;
 using System.Runtime.InteropServices;
 
@@ -9,6 +10,7 @@ namespace BrowserDataScrapper.ExposedActions
     [ClassInterface(ClassInterfaceType.None)]
     public class ExposedActions : IExposedActions
     {
+
         private IBrowserSetActions _browserSetActions;
         private IBrowserGetActions _browserGetActions;
 

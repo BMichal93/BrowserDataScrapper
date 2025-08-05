@@ -8,17 +8,15 @@ namespace BrowserDataScrapper.WebActions.Services
     public class BrowserGetActions : IBrowserGetActions
     {
         private IUIActions _uiActions;
-        private IEngineActions _engineActions;
         private IBrowserGeneralActions _browserGeneralActions;
         private const string _getPageCommand = "javascript:(function(){setTimeout(function(){try{navigator.clipboard.writeText(document.getElementsByTagName('body')[0].innerHTML).then(()=>console.log(' Full HTML copied to clipboard!')).catch(e=>console.log('❌ Copy failed: '+e));}catch(e){console.log('❌ Error: '+e);}},300);})();";
         private const string _getElementById = "javascript:(function(){setTimeout(function(){try{navigator.clipboard.writeText(document.getElementById('{0}').value).then(()=>console.log(' Full HTML copied to clipboard!')).catch(e=>console.log('❌ Copy failed: '+e));}catch(e){console.log('❌ Error: '+e);}},300);})();";
         private const string _exceptionWhenDownloading = "Exception occured when downloading page source: ";
         private const string _getElementByCustomQuery = "javascript:(function(){setTimeout(function(){try{navigator.clipboard.writeText({0}}).then(()=>console.log(' Full HTML copied to clipboard!')).catch(e=>console.log('❌ Copy failed: '+e));}catch(e){console.log('❌ Error: '+e);}},300);})();";
 
-        public BrowserGetActions(IUIActions uiActions, IEngineActions engineActions, IBrowserGeneralActions browserGeneralActions)
+        public BrowserGetActions(IUIActions uiActions, IBrowserGeneralActions browserGeneralActions)
         {
             _uiActions = uiActions;
-            _engineActions = engineActions;
             _browserGeneralActions = browserGeneralActions;
 
         }

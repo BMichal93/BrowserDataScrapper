@@ -19,7 +19,7 @@ namespace BrowserDataScrapper.WebActions.Services.Tests
             var url = "https://www.google.com";
             var expectedPartOfResult = "HTML";
             BrowserGeneralActions browserGeneralActions = new BrowserGeneralActions(uiActions, engineActions);
-            var browserGetActions = new BrowserGetActions(uiActions, engineActions, browserGeneralActions);
+            var browserGetActions = new BrowserGetActions(uiActions, browserGeneralActions);
 
             //Act
             var result = browserGetActions.GetPageSourceAsString(url);
