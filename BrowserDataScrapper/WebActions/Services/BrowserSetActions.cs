@@ -26,13 +26,13 @@ namespace BrowserDataScrapper.WebActions.Services
 
             _browserGeneralActions.PrepareBrowserInstance(url, browserTimeout);
 
-            if (!IsCorrectJSFormat(command))
+            if (!IsCorrectJSFormat("javascript:" + command))
             {
                 result = _incorrectJS;
             }
             else
             {
-                var pageRequestResult = _uiActions.SetBrowserBarValue(command);
+                var pageRequestResult = _uiActions.SetBrowserBarValue("javascript:" + command);
                 result = _actionSucceeded;
             }
 

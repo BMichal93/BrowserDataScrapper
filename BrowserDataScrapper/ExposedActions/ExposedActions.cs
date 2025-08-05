@@ -21,25 +21,25 @@ namespace BrowserDataScrapper.ExposedActions
             _browserSetActions = new BrowserSetActions();
         }
 
-        public string GetPageSourceAsString(string url)
+        public string GetPageSourceAsString(string url, int browserTimeout = 4000)
         {
-            return _browserGetActions.GetPageSourceAsString(url);
+            return _browserGetActions.GetPageSourceAsString(url, browserTimeout);
         }
-        public string GetElementValueById(string url, string id)
+        public string GetElementValueById(string url, string id, int browserTimeout = 4000)
         {
-            return _browserGetActions.GetElementValueById(url, id);
+            return _browserGetActions.GetElementValueById(url, id, browserTimeout);
         }
-        public string InvokeJavascript(string url, string command)
+        public string InvokeJavascript(string url, string command, int browserTimeout = 4000)
         {
-            return _browserSetActions.InvokeJavascript(url, command);
+            return _browserSetActions.InvokeJavascript(url, command, browserTimeout);
         }
-        public void SetElementById(string url, string id, string setTo)
+        public void SetElementById(string url, string id, string setTo, int browserTimeout = 4000)
         {
-            _browserSetActions.SetElementById(url, id, setTo);
+            _browserSetActions.SetElementById(url, id, setTo, browserTimeout);
         }
-        public string GetElementWithCustomQuery(string url, string query)
+        public string GetElementWithCustomQuery(string url, string query, int browserTimeout = 4000)
         {
-            return _browserGetActions.GetElementWithCustomQuery(url, query);
+            return _browserGetActions.GetElementWithCustomQuery(url, query, browserTimeout);
         }
 
 
