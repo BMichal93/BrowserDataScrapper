@@ -44,15 +44,14 @@ namespace BrowserDataScrapper.WebActions.Services
         public void SetElementById(string url, string id, string setTo, int browserTimeout = 4000)
         {
             _browserGeneralActions.PrepareBrowserInstance(url, browserTimeout);
-
-            var pageRequestResult = _uiActions.SetBrowserBarValue(string.Format(_setFieldByIdCommand, id, setTo));
+            _uiActions.SetBrowserBarValue(string.Format(_setFieldByIdCommand, id, setTo));
         }
 
         [STAThread]
         public void ClickOnElementById(string url, string id, int browserTimeout = 4000)
         {
             _browserGeneralActions.PrepareBrowserInstance(url, browserTimeout);
-            var pageRequestResult = _uiActions.SetBrowserBarValue(string.Format(_clickOnELement,id));
+            _uiActions.SetBrowserBarValue(string.Format(_clickOnELement,id));
         }
 
         private bool IsCorrectJSFormat(string command)

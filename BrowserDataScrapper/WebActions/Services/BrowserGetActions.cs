@@ -26,17 +26,7 @@ namespace BrowserDataScrapper.WebActions.Services
         public string GetPageSourceAsString(string url,int browserTimeout = 4000)
         {
 
-            _browserGeneralActions.PrepareBrowserInstance(url, browserTimeout);
-
-            try
-            {
-                var pageRequestResult = _uiActions.SetBrowserBarValue(_getPageCommand);
-                return Clipboard.GetText();
-            }
-            catch(Exception ex)
-            {
-                return _exceptionWhenDownloading + ex.Message;
-            }
+            return GetQuery(url, _getPageCommand, browserTimeout);
 
         }
 
@@ -44,25 +34,22 @@ namespace BrowserDataScrapper.WebActions.Services
         public string GetElementValueById(string url, string id, int browserTimeout = 4000)
         {
 
-            try
-            {
-                _browserGeneralActions.PrepareBrowserInstance(url, browserTimeout);
-                var pageRequestResult = _uiActions.SetBrowserBarValue(string.Format(_getElementById, id));
-                return Clipboard.GetText();
-            }
-            catch (Exception ex)
-            {
-                return _exceptionWhenDownloading + ex.Message;
-            }
+            return GetQuery(url, string.Format(_getElementById, id), browserTimeout);
         }
 
         [STAThread]
         public string GetElementWithCustomQuery(string url, string query, int browserTimeout = 4000)
         {
+            return GetQuery(url, string.Format(_getElementByCustomQuery, query), browserTimeout);
+        }
+
+        [STAThread]
+        private string GetQuery(string url, string query, int browserTimeout = 4000)
+        {
             try
             {
                 _browserGeneralActions.PrepareBrowserInstance(url, browserTimeout);
-                var pageRequestResult = _uiActions.SetBrowserBarValue(string.Format(_getElementByCustomQuery, query));
+                var pageRequestResult = _uiActions.SetBrowserBarValue(query);
                 return Clipboard.GetText();
             }
             catch (Exception ex)
