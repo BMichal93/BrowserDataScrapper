@@ -59,6 +59,8 @@
     <Compile Include="WebActions\Services\BrowserGetActions.cs" />
     <Compile Include="WebActions\Services\BrowserSetActions.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="readme.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
