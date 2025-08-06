@@ -25,63 +25,50 @@ namespace BrowserDataScrapper.WebActions.Services
         [STAThread]
         public string GetPageSourceAsString(string url,int browserTimeout = 4000)
         {
-            string result = null;
 
             _browserGeneralActions.PrepareBrowserInstance(url, browserTimeout);
 
-            var pageRequestResult = _uiActions.SetBrowserBarValue(_getPageCommand);
-
-            if(pageRequestResult.Contains("Copy failed: "))
+            try
             {
-                result = _exceptionWhenDownloading + pageRequestResult;
+                var pageRequestResult = _uiActions.SetBrowserBarValue(_getPageCommand);
+                return Clipboard.GetText();
             }
-            else
+            catch(Exception ex)
             {
-                result = Clipboard.GetText();
+                return _exceptionWhenDownloading + ex.Message;
             }
-
-            return result;
 
         }
 
         [STAThread]
         public string GetElementValueById(string url, string id, int browserTimeout = 4000)
         {
-            string result = null;
 
-            _browserGeneralActions.PrepareBrowserInstance(url,browserTimeout);
-
-            var pageRequestResult = _uiActions.SetBrowserBarValue(string.Format(_getElementById, id));
-
-            if (pageRequestResult.Contains("Copy failed: "))
+            try
             {
-                result = _exceptionWhenDownloading + pageRequestResult;
+                _browserGeneralActions.PrepareBrowserInstance(url, browserTimeout);
+                var pageRequestResult = _uiActions.SetBrowserBarValue(string.Format(_getElementById, id));
+                return Clipboard.GetText();
             }
-            else
+            catch (Exception ex)
             {
-                result = Clipboard.GetText();
+                return _exceptionWhenDownloading + ex.Message;
             }
-
-            return result;
         }
 
         [STAThread]
         public string GetElementWithCustomQuery(string url, string query, int browserTimeout = 4000)
         {
-            string result = null;
-
-            _browserGeneralActions.PrepareBrowserInstance(url, browserTimeout);
-
-            var pageRequestResult = _uiActions.SetBrowserBarValue(string.Format(_getElementByCustomQuery, query));
-            if (pageRequestResult.Contains("Copy failed: "))
+            try
             {
-                result = _exceptionWhenDownloading + pageRequestResult;
+                _browserGeneralActions.PrepareBrowserInstance(url, browserTimeout);
+                var pageRequestResult = _uiActions.SetBrowserBarValue(string.Format(_getElementByCustomQuery, query));
+                return Clipboard.GetText();
             }
-            else
+            catch (Exception ex)
             {
-                result = Clipboard.GetText();
+                return _exceptionWhenDownloading + ex.Message;
             }
-            return result;
         }
 
     }
