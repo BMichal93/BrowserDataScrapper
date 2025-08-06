@@ -13,5 +13,6 @@ namespace BrowserDataScrapper.ExposedActions
         string InvokeJavascript(string url, string command, int browserTimeout = 4000);
         void SetElementById(string url, string id, string setTo, int browserTimeout = 4000);
         string GetElementWithCustomQuery(string url, string query, int browserTimeout = 4000);
+        void ClickOnElementById(string url, string id, int browserTimeout = 4000);
     }
 }

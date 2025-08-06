@@ -12,6 +12,7 @@ namespace BrowserDataScrapper.WebActions.Services
         private const string _actionSucceeded = "Action has been successfully performed on the website.";
         private const string _incorrectJS = "Javascript is incorrect";
         private string _setFieldByIdCommand = "javascript:(function(){{document.getElementById('{0}').value = '{1}';}})();";
+        private string _clickOnELement = "javascript:(function(){{document.getElementById('{0}').click();}})();";
 
         public BrowserSetActions()
         {
@@ -45,6 +46,13 @@ namespace BrowserDataScrapper.WebActions.Services
             _browserGeneralActions.PrepareBrowserInstance(url, browserTimeout);
 
             var pageRequestResult = _uiActions.SetBrowserBarValue(string.Format(_setFieldByIdCommand, id, setTo));
+        }
+
+        [STAThread]
+        public void ClickOnElementById(string url, string id, int browserTimeout = 4000)
+        {
+            _browserGeneralActions.PrepareBrowserInstance(url, browserTimeout);
+            var pageRequestResult = _uiActions.SetBrowserBarValue(string.Format(_clickOnELement,id));
         }
 
         private bool IsCorrectJSFormat(string command)

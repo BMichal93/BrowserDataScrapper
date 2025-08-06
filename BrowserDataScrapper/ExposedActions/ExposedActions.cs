@@ -41,6 +41,10 @@ namespace BrowserDataScrapper.ExposedActions
         {
             return _browserGetActions.GetElementWithCustomQuery(url, query, browserTimeout);
         }
+        public void ClickOnElementById(string url, string id, int browserTimeout = 4000)
+        {
+            _browserSetActions.ClickOnElementById(url, id, browserTimeout);
+        }
 
 
     }
