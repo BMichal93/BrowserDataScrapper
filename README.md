@@ -37,6 +37,25 @@ Simulates click on the element.
 
 ---
 
+##  Example of use in C#
+
+static void Main(string[] args)
+{
+    var obj = new ExposedActions();
+    var res = obj.GetPageSourceAsString("https://www.google.com",6000);
+    Console.WriteLine(res);
+
+} 
+
+public static void Main(string[] args)
+{
+   string url = "http://test";
+   string command = "alert('hi');";
+   obj.InvokeJavascript(url, command);
+}
+
+---
+
 ## Requirements
 
 Requires MS Edge to be installed and having access to the control panel.
@@ -57,3 +76,4 @@ Requires MS Edge to be installed and having access to the control panel.
 1. Download the dll file
 2. Register application using regasm
 3. Reference in the project.
+4. Alternatively, just reference dll in the code
